@@ -87,6 +87,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, waypts,
             var summaryPanel = document.getElementById('directions-panel')
             //summaryPanel.innerHTML = ''
             // For each route, display summary information.
+            var distanceTotal = 0;
             for (var i = 0; i < route.legs.length; i++) {
                 var routeSegment = i + 1
                 summaryPanel.innerHTML += '<span style="color: ' + color + '"><b>Route Segment: ' + routeSegment +
@@ -94,7 +95,9 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer, waypts,
                 summaryPanel.innerHTML += route.legs[i].start_address + '<br><b>to</b><br> '
                 summaryPanel.innerHTML += route.legs[i].end_address + '<br>'
                 summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>'
+                distanceTotal += route.legs[i].distance.value;
             }
+            summaryPanel.innerHTML += '<b>Total Distance: ' + distanceTotal/1000 + ' km</b><br><br>'
 
             summaryPanel.innerHTML += '<b>============================================================</b><br><br>'
         } else {
