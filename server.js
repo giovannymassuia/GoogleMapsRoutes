@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // viewed at http://localhost:3000
 app.get('/', function(req, res) {
